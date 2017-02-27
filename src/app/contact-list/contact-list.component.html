@@ -1,0 +1,19 @@
+<p>
+  contact-list works!
+</p>
+<ul>
+  <li *ngFor="let contact of contacts">
+    <a [routerLink]="['/contactdetails', contact.id]">
+      {{contact.lastName}}, {{contact.name}}
+    </a>
+  </li>
+</ul>
+
+<md-slider></md-slider>
+
+
+<ul>
+  <li *ngFor="let item of items | async">
+    <input [(ngModel)]="item.name"  name="name"/>
+           {{item.name}} {{item.lastName}} | {{item.id}} </li>
+</ul>

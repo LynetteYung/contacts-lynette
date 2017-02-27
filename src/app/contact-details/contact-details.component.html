@@ -1,0 +1,29 @@
+<p>
+  contact-details works!
+</p>
+
+<form *ngIf="contact" (ngSubmit)="onSubmit()" #contactForm="ngForm" >
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <md-input-container class="example-full-width">
+      <input mdInput placeholder="Company (disabled)" disabled value="Google">
+    </md-input-container>
+    <input type="text" class="form-control" id="name" required name="name"
+           [(ngModel)] = "contact.name" #spyName="ngModel">
+    <input type="text" class="form-control" id="lastName" required name="lastName"
+           [(ngModel)] = "contact.lastName" #spyLastName="ngModel">
+  </div>
+  <div [hidden]="spyName.valid || spyName.pristine">First Name is Required</div>
+  <div [hidden]="spyLastName.valid || spyLastName.pristine">Last Name is Required</div>
+  <p>
+    {{spyName.className}}
+  </p>
+
+  <hr />
+  {{contactForm.valid}}
+  <hr />
+  <div>
+    <button type="submit" [disabled]="contactForm.invalid" >Submit ({{spyName.value}} {{spyLastName.value}})</button>
+  </div>
+</form>
